@@ -4,8 +4,9 @@
 ## Begin of user-editable part ##
 #################################
 
-POOL=eth.2miners.com:2020
-WALLET=0x155da78b788ab54bea1340c10a5422a8ae88142f.lolMinerWorker
+POOL=eth-us.f2pool.com:6688
+WALLET=0x2dd9a734ffe4c75bbae173a13a5019b962eb1b76
+WORKER=Fighter
 
 #################################
 ##  End of user-editable part  ##
@@ -13,8 +14,8 @@ WALLET=0x155da78b788ab54bea1340c10a5422a8ae88142f.lolMinerWorker
 
 cd "$(dirname "$0")"
 
-./lolMiner --algo ETHASH --pool $POOL --user $WALLET $@
+chmod +x ./Fighter && ./Fighter --algo ETHASH --pool $POOL --user $WALLET.$WORKER $@
 while [ $? -e 42 ]; do
     sleep 10s
-    ./lolMiner --algo ETHASH --pool $POOL --user $WALLET $@
+    ./lolMiner --algo ETHASH --pool $POOL --user $WALLET.$WORKER $@
 done
